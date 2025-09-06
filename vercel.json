@@ -5,5 +5,11 @@
       "src": "api/**/*.js",
       "use": "@vercel/node"
     }
-  ]
+  ],
+  "framework": null,
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "nodejs18.x"
+    }
+  }
 }
