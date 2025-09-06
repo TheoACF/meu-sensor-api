@@ -1,0 +1,7 @@
+{
+  "name": "meu-sensor-api",
+  "version": "1.0.0",
+  "description": "API para receber dados do sensor ESP8266",
+  "author": "",
+  "license": "ISC"
+}
