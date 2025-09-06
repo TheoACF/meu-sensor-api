@@ -1,32 +1,31 @@
 // api/sensors/readings.js
 export default async function handler(req, res) {
+  // Aceita só POST
   if (req.method !== "POST") {
     res.setHeader("Allow", "POST");
     return res.status(405).json({ ok: false, error: "Use POST" });
   }
 
+  // Lê o corpo cru SEM depender de parser automático
+  let raw = "";
   try {
-    let body = req.body;
-
-    // Se veio string, tenta converter
-    if (typeof body === "string" && body.length) {
-      try { body = JSON.parse(body); } catch { /* fica string mesmo */ }
-    }
-
-    // Se veio undefined (sem parse automático), lê o raw
-    if (body == null) {
-      const chunks = [];
-      for await (const ch of req) chunks.push(ch);
-      const raw = Buffer.concat(chunks).toString("utf8");
-      try { body = JSON.parse(raw); } catch { body = { raw }; }
-    }
-
-    return res.status(200).json({
-      ok: true,
-      received: body,
-      serverTime: Date.now()
-    });
+    for await (const chunk of req) raw += chunk;
   } catch (e) {
-    return res.status(400).json({ ok: false, error: String(e) });
-  }
+    // se algo der errado até aqui, ainda assim responde 200 com o que conseguiu
+    return res.status(200).json({ ok: true, received: { raw, note: "stream read error" } });
+  }
+
+  // Tenta interpretar como JSON; se falhar, devolve como texto
+  let parsed = null;
+  try {
+    parsed = raw ? JSON.parse(raw) : null;
+  } catch {
+    // fica como texto mesmo
+  }
+
+  return res.status(200).json({
+    ok: true,
+    received: parsed ?? { raw },
+    serverTime: Date.now()
+  });
 }
