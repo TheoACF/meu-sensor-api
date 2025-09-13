@@ -1,0 +1,62 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f7f9;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 1000px;
+    margin: auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+h1, h2 {
+    color: #1a253c;
+    text-align: center;
+}
+.live-data {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+}
+.card {
+    background: #eef4f8;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    flex-grow: 1;
+    min-width: 200px;
+}
+.card h2 {
+    margin-top: 0;
+    font-size: 1.2em;
+}
+.card p {
+    font-size: 2.5em;
+    font-weight: bold;
+    color: #007bff;
+    margin: 0;
+}
+.chart-container {
+    margin-bottom: 30px;
+}
+.history-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.history-table th, .history-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+.history-table th {
+    background-color: #f2f2f2;
+}
+.history-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
