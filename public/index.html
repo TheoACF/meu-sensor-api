@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitor de Sensor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>📊 Monitor de Temperatura e Umidade</h1>
+        
+        <div class="live-data">
+            <div class="card">
+                <h2>Temperatura Atual</h2>
+                <p id="current-temp">-- °C</p>
+            </div>
+            <div class="card">
+                <h2>Umidade Atual</h2>
+                <p id="current-humidity">-- %</p>
+            </div>
+            <div class="card">
+                <h2>Última Leitura</h2>
+                <p id="last-update">--</p>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <canvas id="sensorChart"></canvas>
+        </div>
+
+        <div class="history-table">
+            <h2>Histórico de Leituras</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Horário</th>
+                        <th>Temperatura</th>
+                        <th>Umidade</th>
+                    </tr>
+                </thead>
+                <tbody id="history-body">
+                    </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
